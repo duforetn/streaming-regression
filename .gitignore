@@ -1,0 +1,5 @@
+target/*
+spark-warehouse/*
+project/project/*
+project/target/*
+.idea
