@@ -8,7 +8,8 @@ model = 'linearModel'
 model.p = nVars
 model.sparsity = 1
 model.betas = runif(nVars, beta_min, beta_max)
-model.betas = model.betas[sample(floor(nVars*min(0, model.sparsity)))] = 0
+shrunkCoefs = sample(1:nVars, floor(nVars*max(0, 1 - model.sparsity)))
+if (length(shrunkCoefs) > 1) model.betas = model.betas[shrunkCoefs] = 0
 model.alpha = 0.1
 
 linearPrediction <- function(vars)
