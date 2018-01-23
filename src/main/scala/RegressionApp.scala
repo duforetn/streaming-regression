@@ -5,7 +5,7 @@ import com.databricks.spark.avro._
 import com.databricks.spark.csv._
 import org.apache.spark.sql.DataFrame
 
-object DeviceIdHistorical extends SparkApp with StrictLogging {
+object StreamingRegression extends SparkApp with StrictLogging {
 
   import spark.implicits._
   val conf = AppConfig.config
