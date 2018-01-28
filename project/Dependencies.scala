@@ -5,7 +5,7 @@ object Dependencies {
   private object versions {
     val breezeV = "0.12"
     val circeV = "0.4.1"
-    val sparkV = "2.1.0"
+    val sparkV = "2.2.0"
     val confV = "1.2.3"
     val scoptV = "3.5.0"
     val configV = "1.3.1"
@@ -14,7 +14,6 @@ object Dependencies {
   import versions._
 
   val kafka = Seq(
-    ("org.apache.kafka" %% "kafka" % "1.0.0") exclude("org.slf4j", "slf4j-log4j12") exclude("log4j", "log4j") exclude("junit", "junit"),
     ("org.apache.spark" %% "spark-sql-kafka-0-10" % sparkV)
     .exclude("log4j", "log4j")
     .exclude("org.slf4j", "log4j")
