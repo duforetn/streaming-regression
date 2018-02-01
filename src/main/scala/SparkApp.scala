@@ -17,7 +17,8 @@ trait SparkApp extends App {
     .config("spark.driver.memory", "200g")
     .config("spark.executor.extraJavaOptions", "-XX:-UseGCOverheadLimit")
     .config("spark.network.timeout", "60s")
-      .config("spark.executor.heartbeatInterval", "100s")
+    .config("spark.executor.heartbeatInterval", "100s")
+    .config("spark.sql.streaming.checkpointLocation", "checkpoint")
     .getOrCreate()
 
   spark.conf.set("spark.memory.fraction", ".9")

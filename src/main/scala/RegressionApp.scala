@@ -38,11 +38,17 @@ object StreamingRegression extends SparkApp with StrictLogging {
               .withColumn("features", from_json($"value".cast(StringType), featureCol))
               .select("newData", "label", "features")
 
-  df1.writeStream
+  val streamDebug = df1.writeStream
     .format("console")
     .queryName("debug")
     .start()
-    .awaitTermination()
 
-  spark.stop
+  val mlStreaming = df1.writeStream
+    .format("streaming.RegressionSinkProvider")
+    .outputMode("update")
+    .queryName("RegressionStreaming")
+    .start()
+
+  //Wait for all streams to finish
+  spark.streams.awaitAnyTermination()
 }
