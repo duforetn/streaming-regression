@@ -2,4 +2,5 @@ target/*
 spark-warehouse/*
 project/project/*
 project/target/*
+checkpoint/
 .idea
